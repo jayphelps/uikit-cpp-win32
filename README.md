@@ -1,4 +1,4 @@
-uikit-win32
+uikit-cpp-win32
 ===========
 
 I hate Windows...
