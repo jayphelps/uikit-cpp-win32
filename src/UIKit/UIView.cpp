@@ -36,6 +36,6 @@ void UIView::addSubview(UIView *subview) {
     this->subviews.push_back(subview);
 }
 
-BOOL UIView::drawRect(CGRect rect) {
+void UIView::drawRect(CGRect rect) {
 
 }

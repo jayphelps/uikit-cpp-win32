@@ -1,6 +1,7 @@
 #pragma once
 
-#include <Foundation/Foundation.h>
+#include "Foundation/Foundation.h"
+#include "CoreGraphics/CoreGraphics.h"
 
 class UIView : public NSObject {
   public:
@@ -14,5 +15,5 @@ class UIView : public NSObject {
     virtual UIView * initWithFrame(CGRect);
     virtual UIView * _initWithFrame(CGRect);
     virtual void addSubview(UIView *);
-    virtual BOOL drawRect(CGRect);
+    virtual void drawRect(CGRect);
 };
