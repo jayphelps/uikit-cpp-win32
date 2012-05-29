@@ -8,7 +8,7 @@
 # Directories ==================================================================
 
 SRC_DIR        = src
-OUTPUT_DIR     = bin
+BIN_DIR        = bin
 OBJECT_DIR     = obj
 TMP_DIR        = \tmp
 DB_DIR         = db
@@ -49,9 +49,11 @@ VPATH = %$(SRC_EXT) $(SRC_DIR)
 all: $(EXEC)
 
 $(EXEC):
-    if not exist $(OBJECT_DIR)\ mkdir $(OBJECT_DIR)
-    if not exist $(OUTPUT_DIR)\ mkdir $(OUTPUT_DIR)
-    $(CXX) $(CXXFLAGS) $(SRC_FILES) /Fo$(OBJECT_DIR)\ /Fe$(OUTPUT_DIR)\$(OUTPUT_FILE)\
+    @if not exist $(OBJECT_DIR)\ mkdir $(OBJECT_DIR)
+    @if not exist $(BIN_DIR)\ mkdir $(BIN_DIR)
+    @$(CXX) $(CXXFLAGS) $(SRC_FILES) /Fo$(OBJECT_DIR)\ /Fe$(BIN_DIR)\$(OUTPUT_FILE)\
 
 clean:
-    rm -rf $(BUILD_DIR)
+    @if exist $(OBJECT_DIR) rmdir /s /q $(OBJECT_DIR)
+    @if exist $(BIN_DIR) rmdir /s /q $(BIN_DIR)
+    @echo cleaned.
