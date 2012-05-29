@@ -1,3 +1,5 @@
+#ifndef UIWINDOW_H_
+#define UIWINDOW_H_
 #pragma once
 
 #include "Foundation/Foundation.h"
@@ -24,3 +26,6 @@ class UIWindow : public UIView {
     virtual UIWindow * initWithFrame(CGRect);
     virtual void makeKeyAndVisible();
 };
+
+// UIWINDOW_H_
+#endif

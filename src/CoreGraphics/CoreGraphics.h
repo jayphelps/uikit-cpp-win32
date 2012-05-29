@@ -1,5 +1,6 @@
-#ifndef COREGRAPHICS_H
-#define COREGRAPHICS_H
+#ifndef COREGRAPHICS_H_
+#define COREGRAPHICS_H_
+#pragma once
 
 #include "CoreGraphics/CGBase.h"
 //#include "CoreGraphics/CGAffineTransform.h"
@@ -31,5 +32,5 @@
 //#include "CoreGraphics/CGPattern.h"
 //#include "CoreGraphics/CGShading.h"
 
-// COREGRAPHICS_H
+// COREGRAPHICS_H_
 #endif

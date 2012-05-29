@@ -1,3 +1,5 @@
+#ifndef UIAPPLICATIONDELEGATE_H_
+#define UIAPPLICATIONDELEGATE_H_
 #pragma once
 
 #include "Foundation/Foundation.h"
@@ -15,3 +17,6 @@ class UIApplicationDelegate : public NSObject {
 
     virtual void applicationDidFinishLaunching(UIApplication &);
 };
+
+// UIAPPLICATIONDELEGATE_H_
+#endif

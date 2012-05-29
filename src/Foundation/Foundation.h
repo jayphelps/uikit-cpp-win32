@@ -1,5 +1,6 @@
-#ifndef FOUNDATION_H
-#define FOUNDATION_H
+#ifndef FOUNDATION_H_
+#define FOUNDATION_H_
+#pragma once
 
 #include "CoreFoundation/CoreFoundation.h"
 #include "Foundation/NSObjCRuntime.h"
@@ -8,5 +9,5 @@
 #include "Foundation/NSObject.h"
 #include "Foundation/NSArray.h"
 
-// FOUNDATION_H
+// FOUNDATION_H_
 #endif

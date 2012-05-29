@@ -1,3 +1,5 @@
+#ifndef UIVIEWCONTROLLER_H_
+#define UIVIEWCONTROLLER_H_
 #pragma once
 
 #include "Foundation/Foundation.h"
@@ -26,3 +28,6 @@ class UIViewController : public NSObject {
     virtual void loadView();
     virtual void viewDidLoad();
 };
+
+// UIVIEWCONTROLLER_H_
+#endif

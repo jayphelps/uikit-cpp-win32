@@ -1,5 +1,6 @@
-#ifndef NSOBJCRUNTIME_H
-#define NSOBJCRUNTIME_H
+#ifndef NSOBJCRUNTIME_H_
+#define NSOBJCRUNTIME_H_
+#pragma once
 
 #if defined(__cplusplus)
 #define FOUNDATION_EXTERN extern "C"
@@ -71,5 +72,5 @@ class property {
     TValueType (TContainerType::*get)();
 };
 
-// NSOBJCRUNTIME_H
+// NSOBJCRUNTIME_H_
 #endif

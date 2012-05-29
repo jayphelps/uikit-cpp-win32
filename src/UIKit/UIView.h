@@ -1,3 +1,5 @@
+#ifndef UIVIEW_H_
+#define UIVIEW_H_
 #pragma once
 
 #include "Foundation/Foundation.h"
@@ -17,3 +19,6 @@ class UIView : public NSObject {
     virtual void addSubview(UIView *);
     virtual void drawRect(CGRect);
 };
+
+// UIVIEW_H_
+#endif

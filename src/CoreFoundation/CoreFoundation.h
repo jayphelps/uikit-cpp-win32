@@ -1,5 +1,6 @@
-#ifndef COREFOUNDATION_H
-#define COREFOUNDATION_H
+#ifndef COREFOUNDATION_H_
+#define COREFOUNDATION_H_
+#pragma once
 
 #include <sys/types.h>
 #include <stdarg.h>
@@ -19,5 +20,5 @@
 #include <time.h>
 #include <vector>
 
-// COREFOUNDATION_H
+// COREFOUNDATION_H_
 #endif

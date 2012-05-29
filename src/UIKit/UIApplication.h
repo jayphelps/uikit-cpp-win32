@@ -1,4 +1,6 @@
- #pragma once
+#ifndef UIAPPLICATION_H_
+#define UIAPPLICATION_H_
+#pragma once
 
 #include "Foundation/Foundation.h"
 
@@ -30,3 +32,6 @@ inline int UIApplicationMain() {
 
     return 0;
 }
+
+// UIAPPLICATION_H_
+#endif

@@ -1,5 +1,6 @@
-#ifndef CGBASE_H
-#define CGBASE_H
+#ifndef CGBASE_H_
+#define CGBASE_H_
+#pragma once
 
 #include <float.h>
 
@@ -46,5 +47,5 @@ typedef CGFLOAT_TYPE CGFloat;
 # define CG_PRIVATE_EXTERN CG_LOCAL
 #endif
 
-// CGBASE_H
+// CGBASE_H_
 #endif

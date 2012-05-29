@@ -1,5 +1,6 @@
-#ifndef CGGEOMETRY_H
-#define CGGEOMETRY_H
+#ifndef CGGEOMETRY_H_
+#define CGGEOMETRY_H_
+#pragma once
 
 #include "CoreGraphics/CGBase.h"
 
@@ -83,5 +84,5 @@ CG_INLINE bool CGSizeEqualToSize( CGSize size1, CGSize size2 ) {
     return size1.width == size2.width && size1.height == size2.height;
 }
 
-// CGGEOMETRY_H
+// CGGEOMETRY_H_
 #endif

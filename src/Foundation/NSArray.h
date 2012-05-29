@@ -1,5 +1,6 @@
-#ifndef NSARRAY_H
-#define NSARRAY_H
+#ifndef NSARRAY_H_
+#define NSARRAY_H_
+#pragma once
 
 #include "Foundation/Foundation.h"
 //#include "Foundation/NSEnumerator.h"
@@ -11,5 +12,5 @@ class NSArray : public NSObject {
     NSUInteger count;
 };
 
-// NSARRAY_H
+// NSARRAY_H_
 #endif
