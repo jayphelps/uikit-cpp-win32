@@ -58,7 +58,10 @@ class ExampleApplicationDelegate : public UIApplicationDelegate
     }
 };
 
-int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prev_instance, wchar_t* command_line, int show_command)
+int WINAPI wWinMain( HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     wchar_t* pCmdLine,
+                     int nCmdShow )
 {
     return UIApplicationMain<ExampleApplicationDelegate, UIApplication>();
 }
