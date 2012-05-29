@@ -6,6 +6,10 @@
 #error "_WIN32 is not defined. uikit-cpp-win32 only works under win32."
 #endif
 
+#ifndef APP_NAME
+#define APP_NAME "uikit-cpp-win32 app"
+#endif
+
 #include <sys/types.h>
 #include <stdarg.h>
 #include <assert.h>
@@ -21,8 +25,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <tchar.h>
 #include <time.h>
 #include <vector>
+#include <windows.h>
 
 // COREFOUNDATION_H_
 #endif

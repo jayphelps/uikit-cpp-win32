@@ -2,14 +2,11 @@
 #define UIVIEWCONTROLLER_H_
 #pragma once
 
-#include "Foundation/Foundation.h"
+#include "../Foundation/Foundation.h"
 
 #include "UIView.h"
 
 class UIViewController : public NSObject {
-  private:
-    UIView *_view;
-
   public:
     property <UIViewController, UIView *> view;
     UIView * getView();
@@ -20,6 +17,9 @@ class UIViewController : public NSObject {
 
     virtual void loadView();
     virtual void viewDidLoad();
+    
+  private:
+    UIView *_view;
 };
 
 // UIVIEWCONTROLLER_H_

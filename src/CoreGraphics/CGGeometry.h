@@ -2,7 +2,7 @@
 #define CGGEOMETRY_H_
 #pragma once
 
-#include "CoreGraphics/CGBase.h"
+#include "CGBase.h"
 
 /**
  * Points

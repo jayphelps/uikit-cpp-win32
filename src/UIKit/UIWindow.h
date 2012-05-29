@@ -2,15 +2,12 @@
 #define UIWINDOW_H_
 #pragma once
 
-#include "Foundation/Foundation.h"
+#include "../Foundation/Foundation.h"
 
 #include "UIView.h"
 #include "UIViewController.h"
 
 class UIWindow : public UIView {
-  private:
-    UIViewController *_rootViewController;
-
   public:
     property <UIWindow, UIViewController *> rootViewController;
     UIViewController * getRootViewController();
@@ -19,6 +16,9 @@ class UIWindow : public UIView {
     UIWindow();
     virtual UIWindow * initWithFrame(CGRect);
     virtual void makeKeyAndVisible();
+
+  private:
+    UIViewController *_rootViewController;
 };
 
 // UIWINDOW_H_

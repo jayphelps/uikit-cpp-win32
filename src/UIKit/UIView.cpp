@@ -17,17 +17,15 @@ UIView * UIView::initWithFrame(CGRect frame) {
 UIView * UIView::_initWithFrame(CGRect frame) {
     this->frame = frame;
 
-    /*
-    this->hWnd = CreateWindow( this->lpClassName,
+    
+    /*this->_hWnd = CreateWindow( this->lpClassName,
                                this->title,
                                this->dwStyle,
                                x, y, w, h,
                                NULL,
                                NULL,
                                this->_hInstance,
-                               NULL );
-    }
-    */
+                               NULL );*/
     return this;
 }
 

@@ -2,8 +2,8 @@
 #define UIVIEW_H_
 #pragma once
 
-#include "Foundation/Foundation.h"
-#include "CoreGraphics/CoreGraphics.h"
+#include "../Foundation/Foundation.h"
+#include "../CoreGraphics/CoreGraphics.h"
 
 class UIView : public NSObject {
   public:
@@ -18,6 +18,9 @@ class UIView : public NSObject {
     virtual UIView * _initWithFrame(CGRect);
     virtual void addSubview(UIView *);
     virtual void drawRect(CGRect);
+
+  private:
+    HWND _hWnd;
 };
 
 // UIVIEW_H_

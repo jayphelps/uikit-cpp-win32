@@ -2,7 +2,7 @@
 #define NSARRAY_H_
 #pragma once
 
-#include "Foundation/Foundation.h"
+#include "../Foundation/Foundation.h"
 //#include "Foundation/NSEnumerator.h"
 //#include "Foundation/NSRange.h"
 //#include "Foundation/NSObjCRuntime.h"

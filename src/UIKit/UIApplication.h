@@ -2,7 +2,7 @@
 #define UIAPPLICATION_H_
 #pragma once
 
-#include "Foundation/Foundation.h"
+#include "../Foundation/Foundation.h"
 
 #include "UIApplicationDelegate.h"
 
@@ -16,6 +16,9 @@ class UIApplication : public NSObject {
     }
 
   private:
+    WNDCLASSEX _wndClassEx;
+    HINSTANCE _hInstance;
+
     UIApplication();
     UIApplication(UIApplication const&);  // Don't Implement
     void operator=(UIApplication const&); // Don't implement

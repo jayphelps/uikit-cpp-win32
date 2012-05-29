@@ -2,12 +2,14 @@
 #define FOUNDATION_H_
 #pragma once
 
-#include "CoreFoundation/CoreFoundation.h"
-#include "Foundation/NSObjCRuntime.h"
-#include "ApplicationServices/ApplicationServices.h"
+#include "../CoreFoundation/CoreFoundation.h"
+#include "../ApplicationServices/ApplicationServices.h"
 
-#include "Foundation/NSObject.h"
-#include "Foundation/NSArray.h"
+#include "NSObjCRuntime.h"
+
+#include "NSObject.h"
+#include "NSArray.h"
+#include "NSRunLoop.h"
 
 // FOUNDATION_H_
 #endif

@@ -10,8 +10,6 @@
 
 #define rgb(...) RGB(...)
 
-typedef bool BOOL;
-
 #define YES (BOOL) 1
 #define NO  (BOOL) 0
 

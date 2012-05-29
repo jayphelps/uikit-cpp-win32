@@ -29,7 +29,10 @@ CXXFLAGS    = $(DEBUG_LEVEL) /I./$(SRC_DIR)/ /EHsc /Fd$(DB_DIR)\
 
 # Files ========================================================================
 
-SRC_FILES   = $(UIKIT_DIR)\UIApplication.cpp         \
+LIBS        = user32.lib Gdi32.lib
+
+SRC_FILES   = $(FOUNDATION_DIR)\NSRunLoop.cpp        \
+              $(UIKIT_DIR)\UIApplication.cpp         \
               $(UIKIT_DIR)\UIApplicationDelegate.cpp \
               $(UIKIT_DIR)\UIViewController.cpp      \
               $(UIKIT_DIR)\UIView.cpp                \
@@ -51,7 +54,7 @@ all: $(EXEC)
 $(EXEC):
     @if not exist $(OBJECT_DIR)\ mkdir $(OBJECT_DIR)
     @if not exist $(BIN_DIR)\ mkdir $(BIN_DIR)
-    @$(CXX) $(CXXFLAGS) $(SRC_FILES) /Fo$(OBJECT_DIR)\ /Fe$(BIN_DIR)\$(OUTPUT_FILE)\
+    @$(CXX) $(CXXFLAGS) $(SRC_FILES) $(LIBS) /Fo$(OBJECT_DIR)\ /Fe$(BIN_DIR)\$(OUTPUT_FILE)\
 
 clean:
     @if exist $(OBJECT_DIR) rmdir /s /q $(OBJECT_DIR)
