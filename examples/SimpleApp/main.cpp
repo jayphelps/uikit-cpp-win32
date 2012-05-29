@@ -13,7 +13,7 @@ class ExampleViewController : public UIViewController
      */
     void loadView()
     {
-        printf("AND BOOM");
+        OutputDebugString(L"AND BOOM");
         CGRect frame = CGRectMake(0, 0, 100, 200);
         UIView *mainView = (new UIView)->initWithFrame(frame);
 
@@ -58,8 +58,7 @@ class ExampleApplicationDelegate : public UIApplicationDelegate
     }
 };
 
-int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, 
-    LPSTR lpCmdLine, int nCmdShow) 
+int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prev_instance, wchar_t* command_line, int show_command)
 {
     return UIApplicationMain<ExampleApplicationDelegate, UIApplication>();
 }
