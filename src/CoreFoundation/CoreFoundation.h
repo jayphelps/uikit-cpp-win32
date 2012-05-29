@@ -2,6 +2,10 @@
 #define COREFOUNDATION_H_
 #pragma once
 
+#ifndef _WIN32
+#error "_WIN32 is not defined. uikit-cpp-win32 only works under win32."
+#endif
+
 #include <sys/types.h>
 #include <stdarg.h>
 #include <assert.h>

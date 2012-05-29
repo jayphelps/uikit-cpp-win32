@@ -2,7 +2,7 @@
 #define NSOBJCRUNTIME_H_
 #pragma once
 
-#if defined(__cplusplus)
+#ifdef __cplusplus
 #define FOUNDATION_EXTERN extern "C"
 #else
 #define FOUNDATION_EXTERN extern
