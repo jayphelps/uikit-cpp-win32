@@ -61,5 +61,5 @@ class ExampleApplicationDelegate : public UIApplicationDelegate
 int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, 
     LPSTR lpCmdLine, int nCmdShow) 
 {
-	return UIApplicationMain<ExampleApplicationDelegate, UIApplication>();
+    return UIApplicationMain<ExampleApplicationDelegate, UIApplication>();
 }
