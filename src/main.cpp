@@ -14,6 +14,7 @@ class ExampleViewController : public UIViewController
      */
     void loadView()
     {
+        printf("AND BOOM");
         CGRect frame = CGRectMake(0, 0, 100, 200);
         UIView *mainView = (new UIView)->initWithFrame(frame);
 

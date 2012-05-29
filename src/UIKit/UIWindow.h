@@ -13,14 +13,8 @@ class UIWindow : public UIView {
 
   public:
     property <UIWindow, UIViewController *> rootViewController;
-    
-    UIViewController * getRootViewController() {
-        return this->_rootViewController;
-    }
-
-    void setRootViewController(UIViewController *controller) {
-        this->_rootViewController = controller;
-    }
+    UIViewController * getRootViewController();
+    void setRootViewController(UIViewController *);
 
     UIWindow();
     virtual UIWindow * initWithFrame(CGRect);

@@ -12,15 +12,8 @@ class UIViewController : public NSObject {
 
   public:
     property <UIViewController, UIView *> view;
-    
-    UIView * getView() {
-        return this->_view;
-    }
-
-    void setView(UIView *view) {
-        printf("MANLY DICK!!\n");
-        this->_view = view;
-    }
+    UIView * getView();
+    void setView(UIView *);
 
     UIViewController();
     virtual ~UIViewController();
