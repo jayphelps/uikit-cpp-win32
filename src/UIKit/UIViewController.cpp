@@ -1,9 +1,9 @@
 #include "UIViewController.h"
 
 UIViewController::UIViewController() : _view(NULL) {
-    this->view.setContainer(this);
-    this->view.setter(&UIViewController::setView);
-    this->view.getter(&UIViewController::getView);
+    //this->view.setContainer(this);
+    //this->view.setter(&UIViewController::setView);
+    //this->view.getter(&UIViewController::getView);
 }
 
 UIViewController::~UIViewController() {
@@ -11,8 +11,12 @@ UIViewController::~UIViewController() {
 }
 
 UIView * UIViewController::getView() {
-    while (this->_view == NULL) {
-        this->loadView();
+    if (this->_view == NULL) {
+        do {
+            this->loadView();
+        } while (this->_view == NULL);
+
+        this->viewDidLoad();
     }
 
     return this->_view;

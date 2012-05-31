@@ -12,10 +12,3 @@ void NSRunLoop::run() {
         DispatchMessage(&msg);
     }
 }
-
-LRESULT CALLBACK NSRunLoop::WndProcedure( HWND hwnd,
-                                          UINT msg,
-                                          WPARAM wParam,
-                                          LPARAM lParam ) {
-    return 0;
-}

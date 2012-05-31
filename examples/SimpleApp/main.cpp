@@ -13,9 +13,10 @@ class ExampleViewController : public UIViewController
      */
     void loadView()
     {
-        OutputDebugString(L"AND BOOM");
-        CGRect frame = CGRectMake(0, 0, 100, 200);
-        UIView *mainView = (new UIView)->initWithFrame(frame);
+        NSLog(L"AND BOOM");
+        UIView *mainView = (new UIView)->initWithFrame(CGRectMake(0, 0, 100, 200));
+
+        mainView->backgroundColor = UIColor::blackColor();
 
         // Set the main view
         this->view = mainView;
@@ -28,8 +29,9 @@ class ExampleViewController : public UIViewController
      */
     void viewDidLoad()
     {
-        CGRect frame = CGRectMake(0, 0, 100, 200);
-        UIView *anotherView = (new UIView)->initWithFrame(frame);
+        UIView *anotherView = (new UIView)->initWithFrame(CGRectMake(0, 0, 10, 40));
+        
+        anotherView->backgroundColor = UIColor::redColor();
 
         this->view->addSubview(anotherView);
     }
@@ -49,7 +51,7 @@ class ExampleApplicationDelegate : public UIApplicationDelegate
      */
     void applicationDidFinishLaunching(UIApplication &application)
     {
-        CGRect windowFrame = CGRectMake(0, 0, 100, 200);
+        CGRect windowFrame = CGRectMake(0, 0, 800, 600);
 
         this->window = (new UIWindow)->initWithFrame(windowFrame);
         this->window->rootViewController = new ExampleViewController();
@@ -60,8 +62,12 @@ class ExampleApplicationDelegate : public UIApplicationDelegate
 
 int WINAPI wWinMain( HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
-                     wchar_t* pCmdLine,
+                     wchar_t *pCmdLine,
                      int nCmdShow )
 {
-    return UIApplicationMain<ExampleApplicationDelegate, UIApplication>();
+    return UIApplicationMain< ExampleApplicationDelegate,
+                              UIApplication >( hInstance,
+                                               hPrevInstance,
+                                               pCmdLine,
+                                               nCmdShow );
 }

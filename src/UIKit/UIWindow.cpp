@@ -1,9 +1,8 @@
 #include "UIWindow.h"
 
-UIWindow::UIWindow() : _rootViewController(NULL) {
-    this->rootViewController.setContainer(this);
-    this->rootViewController.setter(&UIWindow::setRootViewController);
-    this->rootViewController.getter(&UIWindow::getRootViewController);
+UIWindow::UIWindow()
+    : _rootViewController(NULL) {
+    this->backgroundColor = UIColor::whiteColor();
 }
 
 UIViewController * UIWindow::getRootViewController() {
@@ -21,6 +20,34 @@ UIWindow * UIWindow::initWithFrame(CGRect frame) {
     return this;
 }
 
-void UIWindow::makeKeyAndVisible() {
+BOOL UIWindow::getIsKeyWindow() {
+    //return (UIApplication::sharedApplication.keyWindow == this);
+    return YES;
+}
 
+void UIWindow::_makeVisible() {
+    if ( !ShowWindow(this->_hWnd, SW_SHOW) ) {
+        NSLog(L"ShowWindow FAILED: %d", GetLastError());
+    }
+
+    if ( !BringWindowToTop(this->_hWnd) ) {
+        NSLog(L"BringWindowToTop FAILED: %d", GetLastError());
+    }
+
+    if ( !EnableWindow(this->_hWnd, YES) ) {
+        NSLog(L"EnableWindow FAILED: %d", GetLastError());
+    }
+}
+
+void UIWindow::makeKeyWindow() {
+    //if (!this.isKeyWindow) {
+        //[[UIApplication sharedApplication].keyWindow resignKeyWindow];
+        //UIApplication->sharedApplication().setKeyWindow(this);
+        //this->becomeKeyWindow();
+    //}
+}
+
+void UIWindow::makeKeyAndVisible() {
+    this->_makeVisible();
+    this->makeKeyWindow();
 }

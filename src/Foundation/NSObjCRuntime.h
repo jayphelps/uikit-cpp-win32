@@ -13,62 +13,32 @@
 #define YES (BOOL) 1
 #define NO  (BOOL) 0
 
-#define READ_ONLY  1
-#define WRITE_ONLY 2
-#define READ_WRITE 3
+#define self this
+
+#define readonly  1
+#define writeonly 2
+#define readwrite 3
 
 typedef int NSInteger;
 typedef unsigned int NSUInteger;
 
-template<typename TContainerType, typename TValueType, int TPropAccess = READ_WRITE>
-class property {
-  public:
-    property() {
-        this->_instance = NULL;
-        this->set = NULL;
-        this->get = NULL;
-    }
+#define property(getter, setter)   __declspec( property(get=getter, put=setter) )
+#define property_readonly(getter)  __declspec( property(get=getter) )
+#define property_writeonly(setter) __declspec( property(put=setter) )
 
-    void setContainer(TContainerType* instance) {
-        this->_instance = instance;
-    }
+inline void NSLog(std::wstring format, ...) {
+    wchar_t buffer[256];
+    va_list args;
 
-    void setter(void (TContainerType::*pset)(TValueType value)) {
-        if((TPropAccess == WRITE_ONLY) || (TPropAccess == READ_WRITE))
-          this->set = pset;
-        else
-          this->set = NULL;
-    }
+    format += L"\n";
 
-    void getter(TValueType (TContainerType::*pget)()) {
-        if((TPropAccess == READ_ONLY) || (TPropAccess == READ_WRITE))
-         get = pget;
-        else
-          get = NULL;
-    }
+    va_start(args, format);
+        vswprintf_s(buffer, 245, format.c_str(), args);
+    va_end(args);
 
-    TValueType operator =(const TValueType& value) {
-        assert(_instance != NULL);
-        assert(set != NULL);
-        (_instance->*set)(value);    
-        return value;
-    }
-
-    operator TValueType() {
-        assert(_instance != NULL);
-        assert(get != NULL);
-        return (_instance->*get)();
-    }
-
-    TValueType operator->() {
-        return (_instance->*get)();
-    }
-
-  private:
-    TContainerType* _instance;
-    void (TContainerType::*set)(TValueType value);
-    TValueType (TContainerType::*get)();
-};
+    // Output to Visual Studio Console
+    OutputDebugString(buffer);
+}
 
 // NSOBJCRUNTIME_H_
 #endif

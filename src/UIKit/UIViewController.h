@@ -8,7 +8,7 @@
 
 class UIViewController : public NSObject {
   public:
-    property <UIViewController, UIView *> view;
+    property (getView, setView) UIView *view;
     UIView * getView();
     void setView(UIView *);
 

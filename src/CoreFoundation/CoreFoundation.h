@@ -7,7 +7,15 @@
 #endif
 
 #ifndef APP_NAME
-#define APP_NAME "uikit-cpp-win32 app"
+#define APP_NAME L"uikit-cpp-win32 app"
+#endif
+
+#ifndef UNICODE
+#define UNICODE
+#endif
+
+#ifndef _UNICODE
+#define _UNICODE
 #endif
 
 #include <sys/types.h>
@@ -32,3 +40,4 @@
 
 // COREFOUNDATION_H_
 #endif
+

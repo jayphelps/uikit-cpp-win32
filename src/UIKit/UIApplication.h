@@ -8,12 +8,10 @@
 
 class UIApplication : public NSObject {
   public:
-    UIApplicationDelegate *delegate;
+    static UIApplication& UIApplication::sharedApplication();
+    static LRESULT CALLBACK WndProcedure(HWND, UINT, WPARAM, LPARAM);
 
-    static UIApplication& sharedApplication() {
-        static UIApplication instance;
-        return instance;
-    }
+    UIApplicationDelegate *delegate;
 
   private:
     WNDCLASSEX _wndClassEx;
@@ -28,10 +26,17 @@ class UIApplication : public NSObject {
  * This should probably be moved out of here...
  */
 template<class TDelegate, class TApplication>
-inline int UIApplicationMain() {
+inline int UIApplicationMain( HINSTANCE hInstance,
+                              HINSTANCE hPrevInstance,
+                              wchar_t *pCmdLine,
+                              int nCmdShow ) {
+
     UIApplication &application = TApplication::sharedApplication();
-    application.delegate = new TDelegate;
+    application.delegate = new TDelegate();
     application.delegate->applicationDidFinishLaunching(application);
+
+    NSRunLoop runLoop;
+    runLoop.run();
 
     return 0;
 }

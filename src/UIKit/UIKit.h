@@ -5,6 +5,7 @@
 #include "../Foundation/Foundation.h"
 #include "CoreGraphics/CoreGraphics.h"
 
+#include "UIColor.h"
 #include "UIView.h"
 #include "UIViewController.h"
 #include "UIWindow.h"
