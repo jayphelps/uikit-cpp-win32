@@ -17,6 +17,7 @@ class CALayer : public NSObject {
   public:
     property (getHidden, setHidden) BOOL isHidden;
     property (getNeedsDisplay, setNeedsDisplay) BOOL needsDisplay;
+    
     CGRect frame;
     CGPoint position;
     //NSArray *sublayers;
@@ -27,18 +28,18 @@ class CALayer : public NSObject {
     CALayer();
     virtual ~CALayer();
 
-    CALayer * init();
-    CALayer * initWithLayer(CALayer *);
-    CALayer * initWithFrame(CGRect);
+    virtual CALayer * init();
+    virtual CALayer * initWithLayer(CALayer *);
+    virtual CALayer * initWithFrame(CGRect);
 
-    void addSublayer(CALayer *);
-    void display();
-    void drawInContext();
+    virtual void addSublayer(CALayer *);
+    virtual void display();
+    virtual void drawInContext();
 
-    BOOL getHidden();
-    void setHidden(BOOL);
-    BOOL getNeedsDisplay();
-    void setNeedsDisplay(BOOL);
+    virtual BOOL getHidden();
+    virtual void setHidden(BOOL);
+    virtual BOOL getNeedsDisplay();
+    virtual void setNeedsDisplay(BOOL);
 
   protected:
     DWORD _dwStyle;

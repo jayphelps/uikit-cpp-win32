@@ -26,18 +26,19 @@ class UIView : public NSObject, public CALayerDelegateProtocol {
 
     virtual UIView * initWithFrame(CGRect);
     virtual UIView * _initWithFrame(CGRect);
+    
     virtual void addSubview(UIView *);
-    void drawLayerInContext(CALayer *);
+    virtual void drawLayerInContext(CALayer *);
     virtual BOOL drawRect(CGRect);
 
-    BOOL getHidden();
-    void setHidden(BOOL);
-    BOOL getNeedsDisplay();
-    void setNeedsDisplay(BOOL);
-    CGRect getFrame();
-    void setFrame(CGRect);
-    UIColor * getBackgroundColor();
-    void setBackgroundColor(UIColor *);
+    virtual BOOL getHidden();
+    virtual void setHidden(BOOL);
+    virtual BOOL getNeedsDisplay();
+    virtual void setNeedsDisplay(BOOL);
+    virtual CGRect getFrame();
+    virtual void setFrame(CGRect);
+    virtual UIColor * getBackgroundColor();
+    virtual void setBackgroundColor(UIColor *);
 
 };
 
