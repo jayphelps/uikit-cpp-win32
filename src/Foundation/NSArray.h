@@ -10,6 +10,8 @@
 class NSArray : public NSObject {
   public:
     NSUInteger count;
+
+    NSArray * initWithObject(NSObject *);
 };
 
 // NSARRAY_H_

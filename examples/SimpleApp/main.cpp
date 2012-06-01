@@ -31,9 +31,9 @@ class ExampleViewController : public UIViewController
     {
         UIView *anotherView = (new UIView)->initWithFrame(CGRectMake(0, 0, 10, 40));
         
-        anotherView->backgroundColor = UIColor::redColor();
+        //anotherView->backgroundColor = UIColor::redColor();
 
-        this->view->addSubview(anotherView);
+        //this->view->addSubview(anotherView);
     }
 };
 
@@ -51,10 +51,11 @@ class ExampleApplicationDelegate : public UIApplicationDelegate
      */
     void applicationDidFinishLaunching(UIApplication &application)
     {
-        CGRect windowFrame = CGRectMake(0, 0, 800, 600);
+        CGRect windowFrame = CGRectMake(100.0f, 100.0f, 800.0f, 600.0f);
 
         this->window = (new UIWindow)->initWithFrame(windowFrame);
         this->window->rootViewController = new ExampleViewController();
+        this->window->backgroundColor = UIColor::redColor();
 
         this->window->makeKeyAndVisible();
     }

@@ -6,6 +6,7 @@
 #include "../ApplicationServices/ApplicationServices.h"
 
 #include "NSObjCRuntime.h"
+#include "NSLog.h"
 
 #include "NSObject.h"
 #include "NSArray.h"

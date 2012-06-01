@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CGBase.h"
+#include <windows.h>
 
 /**
  * Points
@@ -39,6 +40,11 @@ typedef enum {
 } CGRectEdge;
 
 /**
+ * Helper for zero frames
+ */
+extern const CGRect CGRectZero;
+
+/**
  * CGPoint helper from (x, y)
  */
 CG_INLINE CGPoint CGPointMake( CGFloat x, CGFloat y ) {
@@ -68,6 +74,16 @@ CG_INLINE CGRect CGRectMake( CGFloat x,
     rect.size.width = width;
     rect.size.height = height;
     return rect;
+}
+
+/**
+ * Win32 RECT to CGRect helper
+ */
+CG_INLINE CGRect RectToCGRect( RECT rect ) {
+    return CGRectMake( (CGFloat) rect.left,
+                       (CGFloat) rect.top,
+                       (CGFloat) rect.right - rect.left,
+                       (CGFloat) rect.bottom - rect.top );
 }
 
 /**

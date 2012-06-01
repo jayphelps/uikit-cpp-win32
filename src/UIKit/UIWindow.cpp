@@ -1,8 +1,9 @@
 #include "UIWindow.h"
+#include "UIColor.h"
 
 UIWindow::UIWindow()
     : _rootViewController(NULL) {
-    this->backgroundColor = UIColor::whiteColor();
+
 }
 
 UIViewController * UIWindow::getRootViewController() {
@@ -16,7 +17,7 @@ void UIWindow::setRootViewController(UIViewController *controller) {
 
 UIWindow * UIWindow::initWithFrame(CGRect frame) {
     this->_initWithFrame(frame);
-
+    this->backgroundColor = UIColor::whiteColor();
     return this;
 }
 
@@ -26,17 +27,7 @@ BOOL UIWindow::getIsKeyWindow() {
 }
 
 void UIWindow::_makeVisible() {
-    if ( !ShowWindow(this->_hWnd, SW_SHOW) ) {
-        NSLog(L"ShowWindow FAILED: %d", GetLastError());
-    }
-
-    if ( !BringWindowToTop(this->_hWnd) ) {
-        NSLog(L"BringWindowToTop FAILED: %d", GetLastError());
-    }
-
-    if ( !EnableWindow(this->_hWnd, YES) ) {
-        NSLog(L"EnableWindow FAILED: %d", GetLastError());
-    }
+    this->isHidden = NO;
 }
 
 void UIWindow::makeKeyWindow() {

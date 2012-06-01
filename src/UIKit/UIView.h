@@ -5,14 +5,21 @@
 #include "../Foundation/Foundation.h"
 #include "../CoreGraphics/CoreGraphics.h"
 
-#include "UIColor.h"
+#include "../QuartzCore/CALayer.h"
 
-class UIView : public NSObject {
+class UIColor;
+class UIViewController;
+
+class UIView : public NSObject, public CALayerDelegateProtocol {
   public:
-    std::vector<UIView *> subviews;
-    CGRect frame;
-    BOOL needsDisplay;
-    UIColor *backgroundColor;
+    property (getHidden, setHidden) BOOL isHidden;
+    property (getFrame, setFrame) CGRect frame;
+    property (getNeedsDisplay, setNeedsDisplay) BOOL needsDisplay;
+    property (getBackgroundColor, setBackgroundColor) UIColor *backgroundColor;
+
+    std::vector<UIView *> _subviews;
+    CALayer *layer;
+    UIViewController *_viewController;
 
     UIView();
     virtual ~UIView();
@@ -20,11 +27,18 @@ class UIView : public NSObject {
     virtual UIView * initWithFrame(CGRect);
     virtual UIView * _initWithFrame(CGRect);
     virtual void addSubview(UIView *);
+    void drawLayerInContext(CALayer *);
     virtual BOOL drawRect(CGRect);
 
-  protected:
-    DWORD dwStyle;
-    HWND _hWnd;
+    BOOL getHidden();
+    void setHidden(BOOL);
+    BOOL getNeedsDisplay();
+    void setNeedsDisplay(BOOL);
+    CGRect getFrame();
+    void setFrame(CGRect);
+    UIColor * getBackgroundColor();
+    void setBackgroundColor(UIColor *);
+
 };
 
 // UIVIEW_H_

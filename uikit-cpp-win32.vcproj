@@ -163,6 +163,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\QuartzCore\CALayer.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\coregraphics\CGBase.h"
 				>
 			</File>
@@ -238,6 +242,14 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
+			<File
+				RelativePath=".\src\QuartzCore\CALayer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\CoreGraphics\CGGeometry.cpp"
+				>
+			</File>
 			<File
 				RelativePath=".\src\foundation\NSRunLoop.cpp"
 				>

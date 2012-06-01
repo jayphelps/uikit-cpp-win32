@@ -1,14 +1,13 @@
 #include "UIView.h"
+#include "../QuartzCore/CALayer.h"
 
 UIView::UIView()
-    : backgroundColor(NULL)
-    , needsDisplay(YES)
-    , dwStyle(WS_DISABLED)
-    , _hWnd(NULL) {
+    : layer(NULL)
+    , _viewController(NULL) {
 }
 
 UIView::~UIView() {
-
+    delete this->layer;
 }
 
 UIView * UIView::initWithFrame(CGRect frame) {
@@ -18,57 +17,31 @@ UIView * UIView::initWithFrame(CGRect frame) {
 }
 
 UIView * UIView::_initWithFrame(CGRect frame) {
+    // Create and set up our layer first
+    this->layer = (new CALayer)->initWithFrame(frame);
+    this->layer->delegate = this;
+
+    // Now do our internal work
     this->frame = frame;
-
-    this->_hWnd = CreateWindow( APP_NAME,       // lpClassName
-                                NULL,           // lpWindowName
-                                this->dwStyle,           // dwStyle
-                                frame.origin.x,
-                                frame.origin.y,
-                                frame.size.width,
-                                frame.size.height, // x, y, width, height
-                                NULL,           // hWndParent
-                                NULL,           // hMenu
-                                NULL,     // hInstance
-                                NULL );         // lpParam
-
-    
-    if ( !this->_hWnd ) {
-        NSLog(L"CreateWindow FAILED: %d", GetLastError());
-    }
-
-    SetWindowLongPtr(this->_hWnd, GWLP_USERDATA, (LONG_PTR)this);
+    this->needsDisplay = YES;
 
     return this;
 }
 
 void UIView::addSubview(UIView *subview) {
-    this->needsDisplay = YES;
-    subview->needsDisplay = YES;
+    //this->_subviews addObject:subview];
+    //subview->_superview = this;
+    //_subviewControllersNeedAppearAndDisappear
 
-    //this->subviews.push_back(subview);
+    this->layer->addSublayer(subview->layer);
+}
 
-    if ( !SetParent(subview->_hWnd, this->_hWnd) ) {
-        NSLog(L"SetParent FAILED: %d", GetLastError());
-    }
+void UIView::drawLayerInContext(CALayer *layer) {
 
-    SetWindowLong(subview->_hWnd, GWL_STYLE, WS_VISIBLE|WS_CHILD);
-
-    if ( !ShowWindow(subview->_hWnd, SW_SHOW) ) {
-        NSLog(L"ShowWindow FAILED: %d", GetLastError());
-    }
-
-    if ( !BringWindowToTop(subview->_hWnd) ) {
-        NSLog(L"BringWindowToTop FAILED: %d", GetLastError());
-    }
-
-    if ( !EnableWindow(subview->_hWnd, YES) ) {
-        NSLog(L"EnableWindow FAILED: %d", GetLastError());
-    }
 }
 
 BOOL UIView::drawRect(CGRect rect) {
-    PAINTSTRUCT Ps;
+    /*PAINTSTRUCT Ps;
     RECT rc;
     BOOL result = YES;
 
@@ -109,5 +82,41 @@ BOOL UIView::drawRect(CGRect rect) {
     //DeleteDC(this->hdcMem);
     //DeleteObject(this->bitmap);
 
-    return result;
+    return result;*/
+
+    return YES;
+}
+
+BOOL UIView::getHidden() {
+    return this->layer->isHidden;
+}
+
+void UIView::setHidden(BOOL value) {
+    this->layer->isHidden = value;
+}
+
+BOOL UIView::getNeedsDisplay() {
+    return this->layer->needsDisplay;
+}
+
+void UIView::setNeedsDisplay(BOOL value) {
+    this->layer->needsDisplay = value;
+}
+
+CGRect UIView::getFrame() {
+    return this->layer->frame;
+}
+
+void UIView::setFrame(CGRect newFrame) {
+    if (this->layer) {
+        this->layer->frame = newFrame;
+    }
+}
+
+UIColor * UIView::getBackgroundColor() {
+    return this->layer->backgroundColor;
+}
+
+void UIView::setBackgroundColor(UIColor *color) {
+    this->layer->backgroundColor = color;
 }
