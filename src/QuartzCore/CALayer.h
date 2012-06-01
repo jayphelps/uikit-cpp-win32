@@ -10,14 +10,14 @@ class UIColor;
 
 class CALayerDelegateProtocol {
   public:
-    virtual void drawLayerInContext(CALayer *) = 0;
+    virtual void drawLayerInContext(CALayer *, CGContextRef) = 0;
 };
 
 class CALayer : public NSObject {
   public:
     property (getHidden, setHidden) BOOL isHidden;
     property (getNeedsDisplay, setNeedsDisplay) BOOL needsDisplay;
-    
+
     CGRect frame;
     CGPoint position;
     //NSArray *sublayers;
@@ -34,7 +34,7 @@ class CALayer : public NSObject {
 
     virtual void addSublayer(CALayer *);
     virtual void display();
-    virtual void drawInContext();
+    virtual void drawInContext(CGContextRef contextRef);
 
     virtual BOOL getHidden();
     virtual void setHidden(BOOL);

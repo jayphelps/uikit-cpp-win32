@@ -5,12 +5,15 @@
 #include "../Foundation/Foundation.h"
 #include "CoreGraphics/CoreGraphics.h"
 
+#include "UIKitDefines.h"
+#include "UIApplicationDelegate.h"
+#include "UIApplication.h"
 #include "UIColor.h"
+#include "UIGraphics.h"
+#include "UILabel.h"
 #include "UIView.h"
 #include "UIViewController.h"
 #include "UIWindow.h"
-#include "UIApplicationDelegate.h"
-#include "UIApplication.h"
 
 // UIKIT_H_
 #endif

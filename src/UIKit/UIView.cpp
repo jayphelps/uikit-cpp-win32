@@ -36,7 +36,7 @@ void UIView::addSubview(UIView *subview) {
     this->layer->addSublayer(subview->layer);
 }
 
-void UIView::drawLayerInContext(CALayer *layer) {
+void UIView::drawLayerInContext(CALayer *layer, CGContextRef contextRef) {
 
 }
 

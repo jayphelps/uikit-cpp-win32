@@ -26,9 +26,9 @@ class UIView : public NSObject, public CALayerDelegateProtocol {
 
     virtual UIView * initWithFrame(CGRect);
     virtual UIView * _initWithFrame(CGRect);
-    
+
     virtual void addSubview(UIView *);
-    virtual void drawLayerInContext(CALayer *);
+    virtual void drawLayerInContext(CALayer *, CGContextRef);
     virtual BOOL drawRect(CGRect);
 
     virtual BOOL getHidden();

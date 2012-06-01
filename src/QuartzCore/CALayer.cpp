@@ -66,12 +66,17 @@ void CALayer::addSublayer(CALayer *sublayer) {
 }
 
 void CALayer::display() {
-    this->drawInContext();
+    if (this->delegate) {
+        //this->displayLayer(this);
+    }
+    CGContextRef context;
+    
+    this->drawInContext(context);
 }
 
-void CALayer::drawInContext() {
+void CALayer::drawInContext(CGContextRef contextRef) {
     if (this->delegate) {
-        this->delegate->drawLayerInContext(this);
+        this->delegate->drawLayerInContext(this, contextRef);
         return;
     }
 }
