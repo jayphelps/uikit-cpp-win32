@@ -191,6 +191,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\Foundation\NSLog.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\foundation\NSObjCRuntime.h"
 				>
 			</File>
@@ -215,7 +219,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\UIKit\UIGraphics.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\uikit\UIKit.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UIKit\UIKitDefines.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UIKit\UILabel.h"
 				>
 			</File>
 			<File
@@ -264,6 +280,10 @@
 			</File>
 			<File
 				RelativePath=".\src\UIKit\UIColor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UIKit\UILabel.cpp"
 				>
 			</File>
 			<File
