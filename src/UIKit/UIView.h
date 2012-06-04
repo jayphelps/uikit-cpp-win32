@@ -18,6 +18,7 @@ class UIView : public NSObject, public CALayerDelegateProtocol {
     property (getBackgroundColor, setBackgroundColor) UIColor *backgroundColor;
 
     std::vector<UIView *> _subviews;
+    UIView *superview;
     CALayer *layer;
     UIViewController *_viewController;
 
@@ -29,7 +30,7 @@ class UIView : public NSObject, public CALayerDelegateProtocol {
 
     virtual void addSubview(UIView *);
     virtual void drawLayerInContext(CALayer *, CGContextRef);
-    virtual BOOL drawRect(CGRect);
+    virtual void drawRect(CGRect);
 
     virtual BOOL getHidden();
     virtual void setHidden(BOOL);

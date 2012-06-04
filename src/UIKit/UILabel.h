@@ -19,11 +19,15 @@ class UILabel : public UIView {
     UILabel();
     virtual ~UILabel();
 
+    virtual UILabel * initWithFrame(CGRect);
+
+    virtual void drawRect(CGRect);
+
     virtual std::wstring getText();
     virtual void setText(std::wstring);
-    virtual UIColor *getTextColor();
+    virtual UIColor * getTextColor();
     virtual void setTextColor(UIColor *);
-    virtual UIColor *getShadowColor();
+    virtual UIColor * getShadowColor();
     virtual void setShadowColor(UIColor *);
     virtual CGSize getShadowOffset();
     virtual void setShadowOffset(CGSize);
@@ -31,6 +35,8 @@ class UILabel : public UIView {
   protected:
     std::wstring _text;
     UIColor *_textColor;
+    UIColor *_shadowColor;
+    CGSize _shadowOffset;
 };
 
 // UILABEL_H_

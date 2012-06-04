@@ -18,17 +18,17 @@
 #define _UNICODE
 #endif
 
-#include <sys/types.h>
+//#include <sys/types.h>
 #include <stdarg.h>
 #include <assert.h>
 #include <ctype.h>
-#include <errno.h>
+//#include <errno.h>
 #include <float.h>
 #include <limits.h>
 #include <locale.h>
 #include <math.h>
 #include <setjmp.h>
-#include <signal.h>
+//#include <signal.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,6 +37,7 @@
 #include <time.h>
 #include <vector>
 #include <windows.h>
+#include <windowsx.h>
 
 // COREFOUNDATION_H_
 #endif

@@ -3,7 +3,6 @@
 
 UIWindow::UIWindow()
     : _rootViewController(NULL) {
-
 }
 
 UIViewController * UIWindow::getRootViewController() {

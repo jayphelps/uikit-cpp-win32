@@ -12,17 +12,17 @@ class UIWindow : public UIView {
     property ( getRootViewController,
                setRootViewController ) UIViewController *rootViewController;
 
-    BOOL getIsKeyWindow();
-    
-    UIViewController * getRootViewController();
-    void setRootViewController(UIViewController *);
-
     UIWindow();
 
     virtual UIWindow * initWithFrame(CGRect);
+
     virtual void _makeVisible();
     virtual void makeKeyWindow();
     virtual void makeKeyAndVisible();
+
+    BOOL getIsKeyWindow();
+    UIViewController * getRootViewController();
+    void setRootViewController(UIViewController *);
 
   private:
     UIViewController *_rootViewController;

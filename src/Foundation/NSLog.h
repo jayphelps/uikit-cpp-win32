@@ -12,7 +12,12 @@ inline void NSLog(std::wstring format, ...) {
     format += L"\n";
 
     va_start(args, format);
-        vswprintf_s(buffer, 245, format.c_str(), args);
+#ifdef _WIN32_WCE
+    // @FIXME not safe, but CE doesn't have _s
+    vswprintf(buffer, format.c_str(), args);
+#else
+    vswprintf_s(buffer, 245, format.c_str(), args);
+#endif
     va_end(args);
 
     // Output to Visual Studio Console

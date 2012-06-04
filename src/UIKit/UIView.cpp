@@ -3,7 +3,8 @@
 
 UIView::UIView()
     : layer(NULL)
-    , _viewController(NULL) {
+    , _viewController(NULL)
+    , superview(NULL) {
 }
 
 UIView::~UIView() {
@@ -30,9 +31,8 @@ UIView * UIView::_initWithFrame(CGRect frame) {
 
 void UIView::addSubview(UIView *subview) {
     //this->_subviews addObject:subview];
-    //subview->_superview = this;
     //_subviewControllersNeedAppearAndDisappear
-
+    subview->superview = this;
     this->layer->addSublayer(subview->layer);
 }
 
@@ -40,7 +40,7 @@ void UIView::drawLayerInContext(CALayer *layer, CGContextRef contextRef) {
 
 }
 
-BOOL UIView::drawRect(CGRect rect) {
+void UIView::drawRect(CGRect rect) {
     /*PAINTSTRUCT Ps;
     RECT rc;
     BOOL result = YES;
@@ -82,9 +82,7 @@ BOOL UIView::drawRect(CGRect rect) {
     //DeleteDC(this->hdcMem);
     //DeleteObject(this->bitmap);
 
-    return result;*/
-
-    return YES;
+*/
 }
 
 BOOL UIView::getHidden() {

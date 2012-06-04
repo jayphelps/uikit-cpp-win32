@@ -41,9 +41,9 @@ class CALayer : public NSObject {
     virtual BOOL getNeedsDisplay();
     virtual void setNeedsDisplay(BOOL);
 
+    HWND _hWnd;
   protected:
     DWORD _dwStyle;
-    HWND _hWnd;
     BOOL _needsDisplay;
 };
 

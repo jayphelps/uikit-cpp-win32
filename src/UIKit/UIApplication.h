@@ -14,7 +14,11 @@ class UIApplication : public NSObject {
     UIApplicationDelegate *delegate;
 
   private:
-    WNDCLASSEX _wndClassEx;
+#ifdef _WIN32_WCE
+    WNDCLASS _wndClass;
+#else
+    WNDCLASSEX _wndClass;
+#endif
     HINSTANCE _hInstance;
 
     UIApplication();
