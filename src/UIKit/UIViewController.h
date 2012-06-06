@@ -17,6 +17,8 @@ class UIViewController : public NSObject {
 
     virtual void loadView();
     virtual void viewDidLoad();
+    virtual void viewWillAppear();
+    virtual void viewDidAppear();
     
   private:
     UIView *_view;

@@ -6,6 +6,8 @@
 #include "../CoreGraphics/CoreGraphics.h"
 
 #include "UIView.h"
+#include "UIStringDrawing.h"
+#include "UIFont.h"
 
 class UIColor;
 
@@ -15,6 +17,9 @@ class UILabel : public UIView {
     property (getTextColor, setTextColor) UIColor *textColor;
     property (getShadowColor, setShadowColor) UIColor *shadowColor;
     property (getShadowOffset, setShadowOffset) CGSize shadowOffset;
+    
+    UIFont font;
+    int textAlignment;
 
     UILabel();
     virtual ~UILabel();

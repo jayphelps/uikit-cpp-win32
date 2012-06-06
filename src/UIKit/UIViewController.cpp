@@ -24,6 +24,7 @@ UIView * UIViewController::getView() {
 
 void UIViewController::setView(UIView *view) {
     this->_view = view;
+    this->_view->_viewController = this;
 }
 
 void UIViewController::loadView() {
@@ -34,5 +35,13 @@ void UIViewController::loadView() {
 }
 
 void UIViewController::viewDidLoad() {
+    
+}
+
+void UIViewController::viewWillAppear() {
+    
+}
+
+void UIViewController::viewDidAppear() {
     
 }

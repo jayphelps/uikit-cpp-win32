@@ -112,6 +112,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				EnableFloatingPointEmulation="false"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -124,6 +125,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				LinkLibraryDependencies="false"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -365,6 +367,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\UIKit\UIFont.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\UIKit\UIGraphics.h"
 				>
 			</File>
@@ -378,6 +384,10 @@
 			</File>
 			<File
 				RelativePath=".\src\UIKit\UILabel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UIKit\UIStringDrawing.h"
 				>
 			</File>
 			<File
@@ -413,6 +423,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\Foundation\NSObject.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\foundation\NSRunLoop.cpp"
 				>
 			</File>
@@ -421,11 +435,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\uikit\UIApplicationDelegate.cpp"
+				RelativePath=".\src\UIKit\UIColor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\UIKit\UIColor.cpp"
+				RelativePath=".\src\UIKit\UIFont.cpp"
 				>
 			</File>
 			<File

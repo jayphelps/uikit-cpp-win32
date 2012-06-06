@@ -12,10 +12,7 @@ class UIApplicationDelegate : public NSObject {
   public:
     UIWindow *window;
 
-    UIApplicationDelegate();
-    virtual ~UIApplicationDelegate();
-
-    virtual void applicationDidFinishLaunching(UIApplication &);
+    virtual void applicationDidFinishLaunching(UIApplication &) = 0;
 };
 
 // UIAPPLICATIONDELEGATE_H_

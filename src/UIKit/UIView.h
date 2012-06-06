@@ -10,7 +10,7 @@
 class UIColor;
 class UIViewController;
 
-class UIView : public NSObject, public CALayerDelegateProtocol {
+class UIView : public CALayerDelegate, public NSObject {
   public:
     property (getHidden, setHidden) BOOL isHidden;
     property (getFrame, setFrame) CGRect frame;

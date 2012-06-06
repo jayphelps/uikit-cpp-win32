@@ -1,4 +1,6 @@
 #include "CALayer.h"
+// @FIXME This is BAD BAD BAD!!
+#include "../UIKit/UIColor.h"
 
 CALayer::CALayer()
     : superlayer(NULL)
@@ -92,6 +94,61 @@ void CALayer::display() {
 }
 
 void CALayer::drawInContext(CGContextRef contextRef) {
+    HBRUSH hBrush, hTmpBr;
+    PAINTSTRUCT ps;
+    
+    HDC hDC;
+    HWND hWndParent = GetParent(this->_hWnd);
+
+    /*CALayer *superlayer = pLayer->superlayer;
+    if (superlayer) {
+        if (superlayer->_hWnd != hWndParent) {
+            NSLog(L"OH SHIT NO!! %d vs. %d", hWndParent, pLayer->_hWnd);
+        }
+    }*/
+
+    //InvalidateRect(hWnd, NULL, TRUE);
+
+    hDC = BeginPaint(this->_hWnd, &ps);
+
+        RECT rc;
+        if ( !GetClientRect(this->_hWnd, &rc) ) {
+            NSLog(L"GetClientRect failed: %d", GetLastError());
+        }
+
+        //MapWindowRect(hWnd, hWndParent, &rc);
+
+        /*CGRect rect = pLayer->frame;
+        RECT rc = CGRectToWin32Rect(rect);
+        CGRect pooRect = Win32RectToCGRect(rc);
+
+        if (!CGRectEqualToRect(rect, pooRect)) {
+            NSLog(L"\n\n");
+            NSLog(L"%f", rect.size.height);
+            NSLog(L"%f", pooRect.size.height);
+            NSLog(L"%d %d", rc.bottom, rc.top);
+        }*/
+
+        if (this->backgroundColor) {
+            NSLog(L"NEEDED backgroundColor");
+
+            hBrush = CreateSolidBrush(this->backgroundColor->colorRef);
+            hTmpBr = (HBRUSH)SelectObject(hDC, hBrush);
+
+            FillRect(hDC, &rc, hBrush);
+            DeleteObject(SelectObject(hDC, hTmpBr));
+
+
+            //NSLog(L"POWER width: %d | %f", rc.right - rc.left, rect.size.width);
+            //NSLog(L"POWER height: %d | %f", rc.bottom - rc.top, rect.size.height);
+            NSLog(L"left: %d", rc.left);
+            NSLog(L"top: %d", rc.top);
+            NSLog(L"right: %d", rc.right);
+            NSLog(L"bottom: %d", rc.bottom);
+        }
+
+    EndPaint(this->_hWnd, &ps);
+
     if (this->delegate) {
         this->delegate->drawLayerInContext(this, contextRef);
         return;

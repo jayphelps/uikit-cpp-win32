@@ -8,7 +8,7 @@
 class CALayer;
 class UIColor;
 
-class CALayerDelegateProtocol {
+class CALayerDelegate {
   public:
     virtual void drawLayerInContext(CALayer *, CGContextRef) = 0;
 };
@@ -22,7 +22,7 @@ class CALayer : public NSObject {
     CGPoint position;
     //NSArray *sublayers;
     CALayer *superlayer;
-    CALayerDelegateProtocol *delegate;
+    CALayerDelegate *delegate;
     UIColor *backgroundColor;
 
     CALayer();

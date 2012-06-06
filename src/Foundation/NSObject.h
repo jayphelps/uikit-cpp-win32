@@ -4,13 +4,8 @@
 
 class NSObject {
   public:
-    NSObject() {
-
-    }
-
-    virtual ~NSObject() {
-
-    }
+    NSObject();
+    virtual ~NSObject();
 };
 
 // NSOBJECT_H_

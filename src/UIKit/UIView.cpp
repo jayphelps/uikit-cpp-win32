@@ -1,4 +1,5 @@
 #include "UIView.h"
+#include "UIViewController.h"
 #include "../QuartzCore/CALayer.h"
 
 UIView::UIView()
@@ -9,6 +10,7 @@ UIView::UIView()
 
 UIView::~UIView() {
     delete this->layer;
+    OutputDebugStringW(L"UIView destroyed\n");
 }
 
 UIView * UIView::initWithFrame(CGRect frame) {
@@ -30,14 +32,21 @@ UIView * UIView::_initWithFrame(CGRect frame) {
 }
 
 void UIView::addSubview(UIView *subview) {
-    //this->_subviews addObject:subview];
-    //_subviewControllersNeedAppearAndDisappear
+    if (subview->_viewController) {
+        subview->_viewController->viewWillAppear();
+    }
+
     subview->superview = this;
     this->layer->addSublayer(subview->layer);
+
+    if (subview->_viewController) {
+        subview->_viewController->viewDidAppear();
+    }
+
 }
 
 void UIView::drawLayerInContext(CALayer *layer, CGContextRef contextRef) {
-
+    this->drawRect(this->frame);
 }
 
 void UIView::drawRect(CGRect rect) {
@@ -94,15 +103,21 @@ void UIView::setHidden(BOOL value) {
 }
 
 BOOL UIView::getNeedsDisplay() {
-    return this->layer->needsDisplay;
+    if (this->layer) {
+        return this->layer->needsDisplay;
+    }
 }
 
 void UIView::setNeedsDisplay(BOOL value) {
-    this->layer->needsDisplay = value;
+    if (this->layer) {
+        this->layer->needsDisplay = value;
+    }
 }
 
 CGRect UIView::getFrame() {
-    return this->layer->frame;
+    if (this->layer) {
+        return this->layer->frame;
+    }
 }
 
 void UIView::setFrame(CGRect newFrame) {
