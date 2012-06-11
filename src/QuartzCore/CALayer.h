@@ -7,10 +7,12 @@
 
 class CALayer;
 class UIColor;
+class UIEvent;
 
 class CALayerDelegate {
   public:
     virtual void drawLayerInContext(CALayer *, CGContextRef) = 0;
+    virtual void touchesBeganWithEvent(UIEvent) = 0;
 };
 
 class CALayer : public NSObject {
@@ -33,6 +35,7 @@ class CALayer : public NSObject {
     virtual CALayer * initWithFrame(CGRect);
 
     virtual void addSublayer(CALayer *);
+    virtual void removeSublayer(CALayer *);
     virtual void display();
     virtual void drawInContext(CGContextRef contextRef);
 

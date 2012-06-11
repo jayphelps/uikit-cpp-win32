@@ -5,12 +5,14 @@
 #include "../Foundation/Foundation.h"
 #include "../CoreGraphics/CoreGraphics.h"
 
-#include "../QuartzCore/CALayer.h"
+#include "UIResponder.h"
 
+class CALayer;
 class UIColor;
 class UIViewController;
+class UIEvent;
 
-class UIView : public CALayerDelegate, public NSObject {
+class UIView : public UIResponder {
   public:
     property (getHidden, setHidden) BOOL isHidden;
     property (getFrame, setFrame) CGRect frame;
@@ -29,6 +31,7 @@ class UIView : public CALayerDelegate, public NSObject {
     virtual UIView * _initWithFrame(CGRect);
 
     virtual void addSubview(UIView *);
+    virtual void removeFromSuperview();
     virtual void drawLayerInContext(CALayer *, CGContextRef);
     virtual void drawRect(CGRect);
 
@@ -40,7 +43,7 @@ class UIView : public CALayerDelegate, public NSObject {
     virtual void setFrame(CGRect);
     virtual UIColor * getBackgroundColor();
     virtual void setBackgroundColor(UIColor *);
-
+    virtual UIResponder * getNextResponder();
 };
 
 // UIVIEW_H_

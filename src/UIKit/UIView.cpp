@@ -1,5 +1,7 @@
 #include "UIView.h"
 #include "UIViewController.h"
+#include "UIEvent.h"
+
 #include "../QuartzCore/CALayer.h"
 
 UIView::UIView()
@@ -42,7 +44,18 @@ void UIView::addSubview(UIView *subview) {
     if (subview->_viewController) {
         subview->_viewController->viewDidAppear();
     }
+}
 
+void UIView::removeFromSuperview() {
+    if (this->_viewController) {
+        this->_viewController->viewWillDisappear();
+    }
+
+    this->superview->layer->removeSublayer(this->layer);
+
+    if (this->_viewController) {
+        this->_viewController->viewDidDisappear();
+    }
 }
 
 void UIView::drawLayerInContext(CALayer *layer, CGContextRef contextRef) {
@@ -132,4 +145,14 @@ UIColor * UIView::getBackgroundColor() {
 
 void UIView::setBackgroundColor(UIColor *color) {
     this->layer->backgroundColor = color;
+}
+
+UIResponder * UIView::getNextResponder() {
+    OutputDebugStringW(L"getNextResponder\n");
+    if (this->_viewController) {
+        OutputDebugStringW(L"_viewController\n");
+        return this->_viewController;
+    } else {
+        return this->superview;
+    }
 }

@@ -47,5 +47,8 @@ typedef CGFLOAT_TYPE CGFloat;
 # define CG_PRIVATE_EXTERN CG_LOCAL
 #endif
 
+#define SCREEN_WIDTH (CGFloat)GetSystemMetrics(SM_CXSCREEN)
+#define SCREEN_HEIGHT (CGFloat)GetSystemMetrics(SM_CYSCREEN)
+
 // CGBASE_H_
 #endif

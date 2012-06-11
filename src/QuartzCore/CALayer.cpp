@@ -65,7 +65,6 @@ CALayer * CALayer::initWithLayer(CALayer *layer) {
 }
 
 void CALayer::addSublayer(CALayer *sublayer) {
-    sublayer->superlayer = this;
 
     if ( !SetParent(sublayer->_hWnd, this->_hWnd) ) {
         NSLog(L"SetParent FAILED: %d", GetLastError());
@@ -76,6 +75,30 @@ void CALayer::addSublayer(CALayer *sublayer) {
     if ( !ShowWindow(sublayer->_hWnd, SW_SHOW) ) {
         NSLog(L"ShowWindow FAILED: %d", GetLastError());
     }
+
+    sublayer->superlayer = this;
+    sublayer->needsDisplay = YES;
+
+    /*if ( !BringWindowToTop(sublayer->_hWnd) ) {
+        NSLog(L"BringWindowToTop FAILED: %d", GetLastError());
+    }*/
+
+    UpdateWindow(this->_hWnd);
+}
+
+void CALayer::removeSublayer(CALayer *sublayer) {
+    if ( !SetParent(sublayer->_hWnd, NULL) ) {
+        NSLog(L"SetParent FAILED: %d", GetLastError());
+    }
+
+    SetWindowLong(sublayer->_hWnd, GWL_STYLE, NULL );
+    
+    if ( !ShowWindow(sublayer->_hWnd, SW_HIDE) ) {
+        NSLog(L"ShowWindow FAILED: %d", GetLastError());
+    }
+
+    sublayer->superlayer = NULL;
+    //sublayer->needsDisplay = NO;
 
     /*if ( !BringWindowToTop(sublayer->_hWnd) ) {
         NSLog(L"BringWindowToTop FAILED: %d", GetLastError());
@@ -161,6 +184,7 @@ BOOL CALayer::getNeedsDisplay() {
 
 void CALayer::setNeedsDisplay(BOOL value) {
     this->_needsDisplay = value;
+    UpdateWindow(this->_hWnd);
 }
 
 BOOL CALayer::getHidden() {

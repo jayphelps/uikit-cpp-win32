@@ -10,6 +10,10 @@ class UIColor : public NSObject {
     static UIColor * blackColor();
     static UIColor * whiteColor();
     static UIColor * redColor();
+    static UIColor * greenColor();
+    static UIColor * yellowColor();
+    static UIColor * magentaColor();
+    
     static UIColor * colorWithRedGreenBlueAlpha(CGFloat, CGFloat, CGFloat, CGFloat);
 
     COLORREF colorRef;

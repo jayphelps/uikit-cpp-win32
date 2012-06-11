@@ -3,17 +3,6 @@
 
 #include <iostream>
 
-class Fucker : public std::auto_ptr<UIView> {
-  public:
-    ~Fucker() {
-        std::wcout << L"IM GONE" << std::endl;
-    }
-
-    void kickDog() {
-        std::wcout << L"IM KICKING THE FUCKINGDOG" << std::endl;
-    }
-};
-
 UILabel::UILabel()
     : textAlignment(UITextAlignmentLeft) {
     this->textColor = UIColor::blackColor();
@@ -74,7 +63,7 @@ void UILabel::drawRect(CGRect recter) {
               this->textAlign | lineType | DT_WORD_ELLIPSIS );*/
 
     if ( !this->text.empty() ) {
-        std::wcout << L"UILabel drawRect: drawing text" << std::endl;
+        //std::wcout << L"UILabel drawRect: drawing text" << std::endl;
 
         RECT rect;
 
@@ -85,7 +74,7 @@ void UILabel::drawRect(CGRect recter) {
         LOGFONT logFont;
         memset(&logFont, 0, sizeof(LOGFONT));  
 
-        logFont.lfHeight = abs((this->font.pointSize * GetDeviceCaps(hDC, LOGPIXELSY)) / 72); 
+        logFont.lfHeight = abs(((int)this->font.pointSize * GetDeviceCaps(hDC, LOGPIXELSY)) / 72); 
         //logFont.lfWeight = this->fontWeight;
         logFont.lfQuality = CLEARTYPE_QUALITY;
         logFont.lfCharSet = DEFAULT_CHARSET;
@@ -96,7 +85,7 @@ void UILabel::drawRect(CGRect recter) {
 
         // Drawing actual text
 
-        GetClientRect (this->layer->_hWnd, &rect);
+        GetClientRect(this->layer->_hWnd, &rect);
 
         SetTextColor(hDC, this->textColor->colorRef);
         SetBkMode(hDC, TRANSPARENT);
@@ -108,10 +97,6 @@ void UILabel::drawRect(CGRect recter) {
                   this->textAlignment | DT_SINGLELINE | DT_NOCLIP );
 
         DeleteDC(hDC);
-
-        Fucker *foo = new Fucker();
-
-        foo->kickDog();
 
     } else {
         std::wcout << L"UILabel drawRect: text is empty" << std::endl;

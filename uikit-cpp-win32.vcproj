@@ -367,6 +367,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\UIKit\UIEvent.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\UIKit\UIFont.h"
 				>
 			</File>
@@ -384,6 +388,10 @@
 			</File>
 			<File
 				RelativePath=".\src\UIKit\UILabel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UIKit\UIResponder.h"
 				>
 			</File>
 			<File
@@ -439,11 +447,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\UIKit\UIEvent.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\UIKit\UIFont.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\src\UIKit\UILabel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UIKit\UIResponder.cpp"
 				>
 			</File>
 			<File

@@ -1,0 +1,61 @@
+#ifndef UIRESPONDER_H_
+#define UIRESPONDER_H_
+#pragma once
+
+#include "../Foundation/Foundation.h"
+#include "../QuartzCore/CALayer.h"
+
+typedef enum {
+    UIControlEventTouchDown           = 1 <<  0,      // on all touch downs
+    UIControlEventTouchDownRepeat     = 1 <<  1,      // on multiple touchdowns (tap count > 1)
+    UIControlEventTouchDragInside     = 1 <<  2,
+    UIControlEventTouchDragOutside    = 1 <<  3,
+    UIControlEventTouchDragEnter      = 1 <<  4,
+    UIControlEventTouchDragExit       = 1 <<  5,
+    UIControlEventTouchUpInside       = 1 <<  6,
+    UIControlEventTouchUpOutside      = 1 <<  7,
+    UIControlEventTouchCancel         = 1 <<  8,
+
+    UIControlEventValueChanged        = 1 << 12,     // sliders, etc.
+
+    UIControlEventEditingDidBegin     = 1 << 16,     // UITextField
+    UIControlEventEditingChanged      = 1 << 17,
+    UIControlEventEditingDidEnd       = 1 << 18,
+    UIControlEventEditingDidEndOnExit = 1 << 19,     // 'return key' ending editing
+
+    UIControlEventAllTouchEvents      = 0x00000FFF,  // for touch events
+    UIControlEventAllEditingEvents    = 0x000F0000,  // for UITextField
+    UIControlEventApplicationReserved = 0x0F000000,  // range available for application use
+    UIControlEventSystemReserved      = 0xF0000000,  // range reserved for internal framework use
+    UIControlEventAllEvents           = 0xFFFFFFFF
+} UIControlEvents;
+
+class UIEvent;
+class UIViewController;
+class UIResponder;
+
+//typedef void (*FuncType)(UIViewController *, UIResponder *);
+//typedef void (UIViewController::*FuncType)(UIResponder *);
+typedef void (*FuncType)(UIResponder *);
+
+class UIResponder : public NSObject, public CALayerDelegate {
+  public:
+    property (getNextResponder, setNextResponder) UIResponder *nextResponder;
+
+    UIViewController *_target;
+    FuncType _action;
+
+    UIResponder();
+    virtual ~UIResponder();
+    virtual void addTarget(UIViewController *, FuncType, UIControlEvents);
+    virtual void touchesBeganWithEvent(UIEvent);
+
+    // @TODO Remove this
+    void drawLayerInContext(CALayer *, CGContextRef);
+
+    virtual UIResponder * getNextResponder();
+    virtual void setNextResponder(UIResponder *);
+};
+
+// UIRESPONDER_H_
+#endif

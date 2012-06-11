@@ -1,5 +1,7 @@
 #include "UIApplication.h"
 #include "UIColor.h"
+#include "UIEvent.h"
+#include "UIView.h"
 
 UIApplication::UIApplication() {
     HINSTANCE hInstance = GetModuleHandle(NULL);
@@ -67,7 +69,35 @@ LRESULT CALLBACK UIApplication::WndProcedure( HWND hWnd,
     CALayer* pLayer = (CALayer *)lpUserData;
 
     switch (msg) {
-        case WM_PAINT:
+        case WM_LBUTTONDOWN: {
+            OutputDebugStringW(L"WM_LBUTTONDOWN\n");
+
+            if (pLayer->delegate) {
+                UIEvent event;
+                event.x = GET_X_LPARAM(lParam);
+                event.y = GET_Y_LPARAM(lParam);
+                event.view = (UIView *) pLayer->delegate;
+
+                pLayer->delegate->touchesBeganWithEvent(event);
+
+            }
+
+            /*if (view->userInteractionEnabled)
+            {
+                view->touchDown(view);
+            }
+
+            HWND hParent = GetParent(hwnd);
+
+            if (hParent)
+            {
+                SendMessage(hParent, WM_LBUTTONDOWN, wParam, lParam);
+            }*/
+
+            break;
+        }
+
+        case WM_PAINT: {
             NSLog(L"WM_PAINT");
 
             if (pLayer) {
@@ -81,10 +111,14 @@ LRESULT CALLBACK UIApplication::WndProcedure( HWND hWnd,
             }
 
             return DefWindowProc(hWnd, msg, wParam, lParam);
-        case WM_DESTROY:
+        }
+
+        case WM_DESTROY: {
             NSLog(L"WM_DESTROY");
             PostQuitMessage(WM_QUIT);
             break;
+        }
+
         default:
             return DefWindowProc(hWnd, msg, wParam, lParam);
     }

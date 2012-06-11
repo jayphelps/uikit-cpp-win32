@@ -28,7 +28,7 @@ void UIViewController::setView(UIView *view) {
 }
 
 void UIViewController::loadView() {
-    CGRect frame = CGRectMake(0, 0, 100, 200);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     // Create an empty view by default
     this->view = (new UIView)->initWithFrame(frame);
@@ -43,5 +43,13 @@ void UIViewController::viewWillAppear() {
 }
 
 void UIViewController::viewDidAppear() {
+    
+}
+
+void UIViewController::viewWillDisappear() {
+
+}
+
+void UIViewController::viewDidDisappear() {
     
 }
