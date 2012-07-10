@@ -1,9 +1,7 @@
 uikit-cpp-win32
 ===========
 
-Framework for C++ Win32 that was quite heavily inspired by Apple's UIKit (and its dependencies).
-
-Note: this is being extracted/rewritten from an older project I did for Windows Mobile 5 Pocket PC and as such may not compile/run out of the box for every win32 platform, though there is a good chance it will since it uses very low level win32 APIs.
+Framework for C++ Win32 that was quite heavily inspired by Apple's UIKit (and its dependencies). Originally used only on Windows Mobile 5 Pocket PC, this version is slowly attempting to work on any NT kernel. It still needs some serious love. I'm not a Windows user, so it's really been an adventure learning the lower level APIs.
 
 License
 --------
